@@ -1,0 +1,55 @@
+---
+import { AgGridReact } from 'ag-grid-react';
+import { useState } from 'react';
+
+// Sample data to get started; you can replace or expand this.
+const rowData = [
+  { name: 'Cursor', foundation: 'OpenAI-based', codeGen: 'Excellent', debug: 'Basic', pricing: 'Freemium' },
+  { name: 'Windsurf', foundation: 'Custom LLM', codeGen: 'Moderate', debug: 'Advanced', pricing: 'Subscription' },
+  { name: 'Lovable', foundation: 'OpenAI-based', codeGen: 'High-level', debug: 'Minimal', pricing: 'Free' },
+  { name: 'Bolt', foundation: 'GPT-4', codeGen: 'Great', debug: 'Builtin Tools', pricing: 'Subscription' },
+  { name: 'Devin', foundation: 'GPT-3.5', codeGen: 'Good', debug: 'Experimental', pricing: 'Freemium' },
+];
+
+const columnDefs = [
+  { field: 'name', headerName: 'AI Assistant', sortable: true },
+  { field: 'foundation', headerName: 'Model/Infrastructure', sortable: true },
+  { field: 'codeGen', headerName: 'Code Generation', sortable: true },
+  { field: 'debug', headerName: 'Debugging Support', sortable: true },
+  { field: 'pricing', headerName: 'Pricing', sortable: true },
+];
+
+const defaultColDef = {
+  flex: 1,
+  minWidth: 150,
+  filter: true,
+  resizable: true,
+};
+
+const [gridApi, setGridApi] = useState(null);
+
+function onGridReady(params) {
+  setGridApi(params.api);
+}
+---
+
+<style global>
+  /* AG Grid styles (or import them via CSS/SCSS) */
+  @import 'ag-grid-community/dist/styles/ag-grid.css';
+  @import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+
+  .ag-theme-alpine {
+    height: 500px; /* Adjust height as needed */
+    width: 100%;
+    margin: 2rem 0;
+  }
+</style>
+
+<div class="ag-theme-alpine">
+  <AgGridReact
+    columnDefs={columnDefs}
+    defaultColDef={defaultColDef}
+    rowData={rowData}
+    onGridReady={onGridReady}
+  />
+</div> 

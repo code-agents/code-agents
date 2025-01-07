@@ -1,0 +1,36 @@
+---
+import { useState } from 'react';
+import AGGrid from '../components/AGGrid.astro'; // We'll create a separate component for the grid
+---
+
+<!--
+  A simple Astro page that includes a heading, a short intro,
+  and your AG Grid table for AI assistant comparisons.
+-->
+
+<html lang="en">
+  <head>
+    <title>AI Coding Agents Comparison</title>
+    <meta name="description" content="Collaborative comparison table for AI coding tools"/>
+  </head>
+  <body>
+    <main>
+      <h1>AI Coding Agents: The Ultimate Comparison</h1>
+      <p>
+        Welcome to the open-source comparison of AI coding tools! 
+        Sort, filter, and explore the features of each agent.
+      </p>
+
+      <!-- The AG Grid component goes here -->
+      <AGGrid />
+
+      <section>
+        <h2>How to Contribute</h2>
+        <p>
+          Spot a missing feature or new AI coding assistant? 
+          Submit a Pull Request on our <a href="https://github.com/YourUsername/ai-coding-comparison" target="_blank">GitHub repo</a>!
+        </p>
+      </section>
+    </main>
+  </body>
+</html> 

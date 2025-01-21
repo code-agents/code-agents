@@ -1,6 +1,6 @@
 ---
 import { AgGridReact } from 'ag-grid-react';
-import { useState } from 'react';
+import '../styles/ag-grid.css';
 
 // Sample data to get started; you can replace or expand this.
 const rowData = [
@@ -26,30 +26,25 @@ const defaultColDef = {
   resizable: true,
 };
 
-const [gridApi, setGridApi] = useState(null);
-
-function onGridReady(params) {
-  setGridApi(params.api);
-}
+const gridOptions = {
+  columnDefs,
+  defaultColDef,
+  rowData,
+  onGridReady: (params: any) => {
+    const gridApi = params.api;
+    gridApi.sizeColumnsToFit();
+  }
+};
 ---
 
-<style global>
-  /* AG Grid styles (or import them via CSS/SCSS) */
-  @import 'ag-grid-community/dist/styles/ag-grid.css';
-  @import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
+<style>
   .ag-theme-alpine {
-    height: 500px; /* Adjust height as needed */
+    height: 500px;
     width: 100%;
     margin: 2rem 0;
   }
 </style>
 
 <div class="ag-theme-alpine">
-  <AgGridReact
-    columnDefs={columnDefs}
-    defaultColDef={defaultColDef}
-    rowData={rowData}
-    onGridReady={onGridReady}
-  />
+  <AgGridReact client:load {...gridOptions} />
 </div> 

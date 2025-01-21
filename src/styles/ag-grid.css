@@ -1,0 +1,7 @@
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
+
+.ag-theme-alpine {
+  --ag-background-color: transparent;
+  --ag-odd-row-background-color: rgba(0, 0, 0, 0.03);
+} 
